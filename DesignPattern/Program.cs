@@ -3,7 +3,11 @@ using AbstractFactory.Classes.Factory;
 using AbstractFactory.Classes.Provider;
 using AbstractFactory.Interfaces;
 using Adapter;
+using Bridge;
+using Bridge.BridgeImplementation;
+using Bridge.UsingOfBridge;
 using BuilderPattern;
+using CompositDesignPatter;
 using FactoryDesignPattern.Enum;
 using FactoryDesignPattern.Factory;
 using FactoryDesignPattern.Interface;
@@ -79,21 +83,60 @@ using static BuilderPattern.User;
 #endregion
 #region Structoral Design Pattern
 #region Adaptor
-var xml = @"<note>
-                       <to>Tove</to>
-                       <from>Jani</from>
-                       <heading>Reminder</heading>
-                       <body>Don't forget me this weekend!</body>
-                    </note>";
+//var xml = @"<note>
+//                       <to>Tove</to>
+//                       <from>Jani</from>
+//                       <heading>Reminder</heading>
+//                       <body>Don't forget me this weekend!</body>
+//                    </note>";
 
-IJsonParser<Note> parser = new XmlToJsonAdaptor<Note>();
+//IJsonParser<Note> parser = new XmlToJsonAdaptor<Note>();
 
-// Parse XML to Note object
-Note note = parser.Parse(xml);
-Console.WriteLine(note);
+//// Parse XML to Note object
+//Note note = parser.Parse(xml);
+//Console.WriteLine(note);
 
-// Convert Note object back to XML
-string xmlOutput = parser.ConvertToJson(note);
-Console.WriteLine(xmlOutput);
+//// Convert Note object back to XML
+//string xmlOutput = parser.ConvertToJson(note);
+//Console.WriteLine(xmlOutput);
+#endregion
+#region Bridge
+//CarInsurance carInsurance = new ThirdParty(2009,"Discover","Land Rover",new NoClaimsDiscount());
+//CarInsurance carInsurance2 = new ThirdParty(2019, "Discover", "Land Rover", new AutoOwnerDiscount());
+
+//Console.WriteLine(carInsurance.CalculatePremium());
+//Console.WriteLine(carInsurance2.CalculatePremium());
+#endregion
+
+#region Composite Design Pattern
+GitComponent maincomponent=new Branch("main");
+GitComponent commit1 = new Commit("123456");
+GitComponent commit2 = new Commit("123458");
+GitComponent commit3 = new Commit("123410");
+GitComponent commitignore = new Commit("123410_ignore");
+maincomponent.Add(commit1);
+maincomponent.Add(commit2);
+maincomponent.Add(commit3);
+maincomponent.Remove(commitignore);
+
+GitComponent smallcomponent = new Branch("small");
+GitComponent smallcommit1 = new Commit("123456_small");
+smallcomponent.Add(smallcommit1);
+
+GitComponent Bigcomponent = new Branch("big");
+GitComponent Bigcommit1 = new Commit("123456_Big");
+GitComponent Bigcommit2 = new Commit("123446_Big");
+GitComponent Bigcommit3 = new Commit("123436_Big");
+GitComponent Bigcommit4 = new Commit("123426_Big");
+Bigcomponent.Add(Bigcommit1);
+Bigcomponent.Add(Bigcommit2);
+Bigcomponent.Add(Bigcommit3);
+Bigcomponent.Add(Bigcommit4);
+
+maincomponent.Add(smallcomponent);
+maincomponent.Add(Bigcomponent);
+
+
+maincomponent.ShowDetails();
 #endregion
 #endregion
