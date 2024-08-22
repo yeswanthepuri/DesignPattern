@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Creational Patterns", "Crea
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Structural Patterns", "Structural Patterns", "{F37B7211-1C22-464C-A9A5-D327576C3981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter", "Adapter\Adapter.csproj", "{C8102ED8-3E88-48ED-A79A-DA02A720C82F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter", "Adapter\Adapter.csproj", "{C8102ED8-3E88-48ED-A79A-DA02A720C82F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Bridge\Bridge.csproj", "{C1C605ED-808C-4354-A84F-C3ADED3F1B9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{C8102ED8-3E88-48ED-A79A-DA02A720C82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8102ED8-3E88-48ED-A79A-DA02A720C82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8102ED8-3E88-48ED-A79A-DA02A720C82F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C605ED-808C-4354-A84F-C3ADED3F1B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C605ED-808C-4354-A84F-C3ADED3F1B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C605ED-808C-4354-A84F-C3ADED3F1B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C605ED-808C-4354-A84F-C3ADED3F1B9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{D2897668-F536-4EDA-A617-F43C324273D2} = {C7438802-374A-4996-B614-091EDBA26A0B}
 		{81983DAA-C42F-4AAE-8201-1F30752EB023} = {C7438802-374A-4996-B614-091EDBA26A0B}
 		{C8102ED8-3E88-48ED-A79A-DA02A720C82F} = {F37B7211-1C22-464C-A9A5-D327576C3981}
+		{C1C605ED-808C-4354-A84F-C3ADED3F1B9E} = {F37B7211-1C22-464C-A9A5-D327576C3981}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A32B85E-844B-4872-A02F-5894DD190BE9}

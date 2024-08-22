@@ -86,3 +86,4 @@ ScaffoldingReadMe.txt
 
 # Azure Web App configuration
 .scm/
+.vs/

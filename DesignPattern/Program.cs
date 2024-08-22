@@ -3,6 +3,9 @@ using AbstractFactory.Classes.Factory;
 using AbstractFactory.Classes.Provider;
 using AbstractFactory.Interfaces;
 using Adapter;
+using Bridge;
+using Bridge.BridgeImplementation;
+using Bridge.UsingOfBridge;
 using BuilderPattern;
 using FactoryDesignPattern.Enum;
 using FactoryDesignPattern.Factory;
@@ -79,21 +82,28 @@ using static BuilderPattern.User;
 #endregion
 #region Structoral Design Pattern
 #region Adaptor
-var xml = @"<note>
-                       <to>Tove</to>
-                       <from>Jani</from>
-                       <heading>Reminder</heading>
-                       <body>Don't forget me this weekend!</body>
-                    </note>";
+//var xml = @"<note>
+//                       <to>Tove</to>
+//                       <from>Jani</from>
+//                       <heading>Reminder</heading>
+//                       <body>Don't forget me this weekend!</body>
+//                    </note>";
 
-IJsonParser<Note> parser = new XmlToJsonAdaptor<Note>();
+//IJsonParser<Note> parser = new XmlToJsonAdaptor<Note>();
 
-// Parse XML to Note object
-Note note = parser.Parse(xml);
-Console.WriteLine(note);
+//// Parse XML to Note object
+//Note note = parser.Parse(xml);
+//Console.WriteLine(note);
 
-// Convert Note object back to XML
-string xmlOutput = parser.ConvertToJson(note);
-Console.WriteLine(xmlOutput);
+//// Convert Note object back to XML
+//string xmlOutput = parser.ConvertToJson(note);
+//Console.WriteLine(xmlOutput);
+#endregion
+#region Bridge
+CarInsurance carInsurance = new ThirdParty(2009,"Discover","Land Rover",new NoClaimsDiscount());
+CarInsurance carInsurance2 = new ThirdParty(2019, "Discover", "Land Rover", new AutoOwnerDiscount());
+
+Console.WriteLine(carInsurance.CalculatePremium());
+Console.WriteLine(carInsurance2.CalculatePremium());
 #endregion
 #endregion
