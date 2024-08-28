@@ -8,6 +8,9 @@ using Bridge.BridgeImplementation;
 using Bridge.UsingOfBridge;
 using BuilderPattern;
 using CompositDesignPatter;
+using Decorator;
+using Decorator.ComponentDetails;
+using Decorator.DecoratorImplementation;
 using FactoryDesignPattern.Enum;
 using FactoryDesignPattern.Factory;
 using FactoryDesignPattern.Interface;
@@ -107,36 +110,47 @@ using static BuilderPattern.User;
 //Console.WriteLine(carInsurance.CalculatePremium());
 //Console.WriteLine(carInsurance2.CalculatePremium());
 #endregion
-
 #region Composite Design Pattern
-GitComponent maincomponent=new Branch("main");
-GitComponent commit1 = new Commit("123456");
-GitComponent commit2 = new Commit("123458");
-GitComponent commit3 = new Commit("123410");
-GitComponent commitignore = new Commit("123410_ignore");
-maincomponent.Add(commit1);
-maincomponent.Add(commit2);
-maincomponent.Add(commit3);
-maincomponent.Remove(commitignore);
+//GitComponent maincomponent=new Branch("main");
+//GitComponent commit1 = new Commit("123456");
+//GitComponent commit2 = new Commit("123458");
+//GitComponent commit3 = new Commit("123410");
+//GitComponent commitignore = new Commit("123410_ignore");
+//maincomponent.Add(commit1);
+//maincomponent.Add(commit2);
+//maincomponent.Add(commit3);
+//maincomponent.Remove(commitignore);
 
-GitComponent smallcomponent = new Branch("small");
-GitComponent smallcommit1 = new Commit("123456_small");
-smallcomponent.Add(smallcommit1);
+//GitComponent smallcomponent = new Branch("small");
+//GitComponent smallcommit1 = new Commit("123456_small");
+//smallcomponent.Add(smallcommit1);
 
-GitComponent Bigcomponent = new Branch("big");
-GitComponent Bigcommit1 = new Commit("123456_Big");
-GitComponent Bigcommit2 = new Commit("123446_Big");
-GitComponent Bigcommit3 = new Commit("123436_Big");
-GitComponent Bigcommit4 = new Commit("123426_Big");
-Bigcomponent.Add(Bigcommit1);
-Bigcomponent.Add(Bigcommit2);
-Bigcomponent.Add(Bigcommit3);
-Bigcomponent.Add(Bigcommit4);
+//GitComponent Bigcomponent = new Branch("big");
+//GitComponent Bigcommit1 = new Commit("123456_Big");
+//GitComponent Bigcommit2 = new Commit("123446_Big");
+//GitComponent Bigcommit3 = new Commit("123436_Big");
+//GitComponent Bigcommit4 = new Commit("123426_Big");
+//Bigcomponent.Add(Bigcommit1);
+//Bigcomponent.Add(Bigcommit2);
+//Bigcomponent.Add(Bigcommit3);
+//Bigcomponent.Add(Bigcommit4);
 
-maincomponent.Add(smallcomponent);
-maincomponent.Add(Bigcomponent);
+//maincomponent.Add(smallcomponent);
+//maincomponent.Add(Bigcomponent);
 
 
-maincomponent.ShowDetails();
+//maincomponent.ShowDetails();
+#endregion
+
+#region Decorator
+Client client= new Client();
+
+var simple = new ConcreteComponent();
+Console.WriteLine("Client: I get a simple component:");
+client.ClientCode(simple);
+ConcreteDecoratorA decorator1 = new ConcreteDecoratorA(simple);
+ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
+Console.WriteLine("Client: Now I've got a decorated component:");
+client.ClientCode(decorator2);
 #endregion
 #endregion
