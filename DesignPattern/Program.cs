@@ -7,6 +7,8 @@ using Bridge;
 using Bridge.BridgeImplementation;
 using Bridge.UsingOfBridge;
 using BuilderPattern;
+using ChainofResponsibility;
+using ChainofResponsibility.Payment;
 using CompositDesignPatter;
 using Decorator;
 using Decorator.ComponentDetails;
@@ -17,6 +19,7 @@ using FactoryDesignPattern.Interface;
 using PrototypeDesignPattern;
 using PrototypeDesignPattern.Excel;
 using SingletonDesignPattern;
+using System.Collections.Generic;
 using static BuilderPattern.User;
 
 #region Creational Design Pattern
@@ -143,14 +146,58 @@ using static BuilderPattern.User;
 #endregion
 
 #region Decorator
-Client client= new Client();
+//Client client= new Client();
 
-var simple = new ConcreteComponent();
-Console.WriteLine("Client: I get a simple component:");
-client.ClientCode(simple);
-ConcreteDecoratorA decorator1 = new ConcreteDecoratorA(simple);
-ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
-Console.WriteLine("Client: Now I've got a decorated component:");
-client.ClientCode(decorator2);
+//var simple = new ConcreteComponent();
+//Console.WriteLine("Client: I get a simple component:");
+//client.ClientCode(simple);
+//ConcreteDecoratorA decorator1 = new ConcreteDecoratorA(simple);
+//ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
+//Console.WriteLine("Client: Now I've got a decorated component:");
+//client.ClientCode(decorator2);
+#endregion
+#endregion
+
+
+#region Behavioral Design Pattern
+#region Chain of Responsibility
+//PersonDetails person = new PersonDetails();
+//person.Income = 30000;
+//person.Name = "Yeswanth";
+//person.Age = 80;
+
+//Request request = new Request() { Data = person};
+
+
+//List<string> list = new List<string>();
+
+//MaxageHandler maxageHandler = new MaxageHandler();
+//NameHandler nameHandler = new NameHandler();
+//IncomeHandler incomeHandler = new IncomeHandler();
+//maxageHandler.SetNextHandler(nameHandler);
+//nameHandler.SetNextHandler(incomeHandler);
+////maxageHandler.Process(request);
+
+//list.AddRange(request?.ValidationMessages ?? new List<string>());
+
+
+
+//foreach (string item in list)
+//{
+//    Console.WriteLine(item);
+//}
+
+ChainofResponsibility.Payment.PaymentMethod paymentMethod = 
+    new ChainofResponsibility.Payment.PaymentMethod() { PaymentType = ChainofResponsibility.Payment.PaymentType.Paypal};
+PaymentWalletHandler paymentWalletHandler = new PaymentWalletHandler();
+CreditCardHandler creditCardHandler = new CreditCardHandler();
+DebitCardHandler debitCardHandler = new DebitCardHandler();
+NetBankingHandler netBankingHandler = new NetBankingHandler();
+paymentWalletHandler.SetNextHandler(creditCardHandler);
+creditCardHandler.SetNextHandler(debitCardHandler);
+debitCardHandler.SetNextHandler(netBankingHandler);
+Request request = new Request() { Data = paymentMethod };
+paymentWalletHandler.Process(request: request);
+
 #endregion
 #endregion
