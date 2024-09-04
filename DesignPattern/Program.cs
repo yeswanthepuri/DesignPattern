@@ -9,6 +9,9 @@ using Bridge.UsingOfBridge;
 using BuilderPattern;
 using ChainofResponsibility;
 using ChainofResponsibility.Payment;
+using CommandDesignPattern;
+using CommandDesignPattern.Commands;
+using CommandDesignPattern.Model;
 using CompositDesignPatter;
 using Decorator;
 using Decorator.ComponentDetails;
@@ -187,17 +190,24 @@ using static BuilderPattern.User;
 //    Console.WriteLine(item);
 //}
 
-ChainofResponsibility.Payment.PaymentMethod paymentMethod = 
-    new ChainofResponsibility.Payment.PaymentMethod() { PaymentType = ChainofResponsibility.Payment.PaymentType.Paypal};
-PaymentWalletHandler paymentWalletHandler = new PaymentWalletHandler();
-CreditCardHandler creditCardHandler = new CreditCardHandler();
-DebitCardHandler debitCardHandler = new DebitCardHandler();
-NetBankingHandler netBankingHandler = new NetBankingHandler();
-paymentWalletHandler.SetNextHandler(creditCardHandler);
-creditCardHandler.SetNextHandler(debitCardHandler);
-debitCardHandler.SetNextHandler(netBankingHandler);
-Request request = new Request() { Data = paymentMethod };
-paymentWalletHandler.Process(request: request);
+//ChainofResponsibility.Payment.PaymentMethod paymentMethod = 
+//    new ChainofResponsibility.Payment.PaymentMethod() { PaymentType = ChainofResponsibility.Payment.PaymentType.Paypal};
+//PaymentWalletHandler paymentWalletHandler = new PaymentWalletHandler();
+//CreditCardHandler creditCardHandler = new CreditCardHandler();
+//DebitCardHandler debitCardHandler = new DebitCardHandler();
+//NetBankingHandler netBankingHandler = new NetBankingHandler();
+//paymentWalletHandler.SetNextHandler(creditCardHandler);
+//creditCardHandler.SetNextHandler(debitCardHandler);
+//debitCardHandler.SetNextHandler(netBankingHandler);
+//Request request = new Request() { Data = paymentMethod };
+//paymentWalletHandler.Process(request: request);
 
 #endregion
+#region Command Design Pattern
+PersonCommand person = new PersonCommand() { FirstName="gayatri",LastName="Pinninti"};
+CommandHistory history = new CommandHistory();
+App app = new App(new ChangeFirstNameCommand(person, history),new ChangeLastNameCommand(person, history),new UndoCommand( history));
+app.Run();
+#endregion
+
 #endregion
