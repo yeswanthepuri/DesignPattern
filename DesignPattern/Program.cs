@@ -19,6 +19,7 @@ using Decorator.DecoratorImplementation;
 using FactoryDesignPattern.Enum;
 using FactoryDesignPattern.Factory;
 using FactoryDesignPattern.Interface;
+using FlyweightDesignPattern;
 using PrototypeDesignPattern;
 using PrototypeDesignPattern.Excel;
 using SingletonDesignPattern;
@@ -147,7 +148,6 @@ using static BuilderPattern.User;
 
 //maincomponent.ShowDetails();
 #endregion
-
 #region Decorator
 //Client client= new Client();
 
@@ -158,6 +158,15 @@ using static BuilderPattern.User;
 //ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
 //Console.WriteLine("Client: Now I've got a decorated component:");
 //client.ClientCode(decorator2);
+#endregion
+#region FlyWeight
+var lat = 1;
+var lng = 1;
+var singleTonForCarManager = SingleTonForCarManager.GetInstance();
+foreach (var item in singleTonForCarManager.CarManagers)
+{
+    item.SetLocation(lat++, lng++);
+}
 #endregion
 #endregion
 
@@ -204,10 +213,10 @@ using static BuilderPattern.User;
 
 #endregion
 #region Command Design Pattern
-PersonCommand person = new PersonCommand() { FirstName="gayatri",LastName="Pinninti"};
-CommandHistory history = new CommandHistory();
-App app = new App(new ChangeFirstNameCommand(person, history),new ChangeLastNameCommand(person, history),new UndoCommand( history));
-app.Run();
+//PersonCommand person = new PersonCommand() { FirstName="gayatri",LastName="Pinninti"};
+//CommandHistory history = new CommandHistory();
+//App app = new App(new ChangeFirstNameCommand(person, history),new ChangeLastNameCommand(person, history),new UndoCommand( history));
+//app.Run();
 #endregion
 
 #endregion

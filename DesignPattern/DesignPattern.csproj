@@ -17,6 +17,7 @@
     <ProjectReference Include="..\CompositDesignPatter\CompositDesignPatter.csproj" />
     <ProjectReference Include="..\Decorator\Decorator.csproj" />
     <ProjectReference Include="..\FactoryDesignPattern\FactoryDesignPattern.csproj" />
+    <ProjectReference Include="..\FlyweightDesignPattern\FlyweightDesignPattern.csproj" />
     <ProjectReference Include="..\PrototypeDesignPattern\PrototypeDesignPattern.csproj" />
     <ProjectReference Include="..\SingletonDesignPattern\SingletonDesignPattern.csproj" />
   </ItemGroup>
