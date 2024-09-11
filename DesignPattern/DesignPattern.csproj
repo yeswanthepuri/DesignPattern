@@ -19,6 +19,7 @@
     <ProjectReference Include="..\FactoryDesignPattern\FactoryDesignPattern.csproj" />
     <ProjectReference Include="..\FlyweightDesignPattern\FlyweightDesignPattern.csproj" />
     <ProjectReference Include="..\PrototypeDesignPattern\PrototypeDesignPattern.csproj" />
+    <ProjectReference Include="..\ProxyDesignPattern\ProxyDesignPattern.csproj" />
     <ProjectReference Include="..\SingletonDesignPattern\SingletonDesignPattern.csproj" />
   </ItemGroup>
 

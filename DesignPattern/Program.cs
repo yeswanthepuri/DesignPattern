@@ -22,6 +22,7 @@ using FactoryDesignPattern.Interface;
 using FlyweightDesignPattern;
 using PrototypeDesignPattern;
 using PrototypeDesignPattern.Excel;
+using ProxyDesignPattern;
 using SingletonDesignPattern;
 using System.Collections.Generic;
 using static BuilderPattern.User;
@@ -160,13 +161,19 @@ using static BuilderPattern.User;
 //client.ClientCode(decorator2);
 #endregion
 #region FlyWeight
-var lat = 1;
-var lng = 1;
-var singleTonForCarManager = SingleTonForCarManager.GetInstance();
-foreach (var item in singleTonForCarManager.CarManagers)
-{
-    item.SetLocation(lat++, lng++);
-}
+//var lat = 1;
+//var lng = 1;
+//var singleTonForCarManager = SingleTonForCarManager.GetInstance();
+//foreach (var item in singleTonForCarManager.CarManagers)
+//{
+//    item.SetLocation(lat++, lng++);
+//}
+#endregion
+
+#region Proxey
+//this is plain call
+IBlogPostService blogPostService = new PrintTheBlogpostService(new BlogPostService());
+blogPostService.GetAllBlogs();
 #endregion
 #endregion
 
