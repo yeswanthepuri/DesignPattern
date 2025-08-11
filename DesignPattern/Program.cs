@@ -3,6 +3,10 @@ using AbstractFactory.Classes.Factory;
 using AbstractFactory.Classes.Provider;
 using AbstractFactory.Interfaces;
 using Adapter;
+using Advance.Delegates;
+using Advance.EventAndDelegates;
+using Advance.Generics;
+using Advance.LINQ;
 using Bridge;
 using Bridge.BridgeImplementation;
 using Bridge.UsingOfBridge;
@@ -16,6 +20,7 @@ using CompositDesignPatter;
 using Decorator;
 using Decorator.ComponentDetails;
 using Decorator.DecoratorImplementation;
+using DesignPattern.Advance.EventAndDelegates;
 using FactoryDesignPattern.Enum;
 using FactoryDesignPattern.Factory;
 using FactoryDesignPattern.Interface;
@@ -226,4 +231,79 @@ blogPostService.GetAllBlogs();
 //app.Run();
 #endregion
 
+#endregion
+
+
+#region Advance
+
+#region Generics
+//var val = new GenericValueType<int>();
+//Console.WriteLine(val.GetValueOrDefault());
+#endregion
+#region Delegates
+
+//var process=  new PhotoProcessor();
+//var filters = new PhotoFilters();
+////--> Invoking custome delegate
+////PhotoProcessor.PhotoFilterHandler filterHandler = filters.ApplyBrightness;
+////filterHandler += filters.ApplyContrast;
+
+
+////Invoking inbuild delegate Ex: Action, Func, Prdedicate
+//Action<Photo> action = filters.ApplyBrightness;
+//action += filters.ApplyContrast;
+//process.Process("Heart", action);
+
+
+//static void RemoveRedEyeFilter(Photo photo)
+//{
+//    Console.WriteLine("Apply RemoveRedEyes");
+//}
+
+#endregion
+#region LambdaExpression
+
+//Func<int,int> square = num=>num*num;
+//Console.WriteLine(square(5));
+
+#endregion
+
+#region Event And Delegates
+//var video = new Video() { Title="Missing Pages"};
+
+//var videoEncoding = new VideoEncoder();
+//var mailservice = new EmailService();
+//var messageservice = new MessageService();
+
+//videoEncoding.VideoEncoded += mailservice.OnVideoEncoded;
+//videoEncoding.VideoEncoded += messageservice.OnVideoEncoded;
+
+
+//videoEncoding.Encode(video);
+
+#endregion
+
+#region LINQ
+var books = new BookRepository().GetBooks();
+
+//LINQ Extension Method
+var cheapBooks = books
+    //.WherePriceGreaterThan(10) //Custom Linq
+    .WhereCustom(b => b.Title.Contains("Book") && b.Price < 10)
+    .OrderByDescending(x => x.Price)
+    .Select(x => x.Title)
+    ;
+//Linq Query Operator
+var cheapLinqBooks = from b in books
+                     where b.Price <10
+                     orderby b.Title
+                     select b.Title;
+
+foreach (var item in cheapBooks)
+{
+    Console.WriteLine($"CheapBooks: {item}");
+}
+
+
+#endregion
 #endregion
